@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: mark43/github-actions/collect-issues@v1
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
+        repo-token: '${{ secrets.GITHUB_TOKEN }}'
         titlefilters: '["testing"]'
         labelfilters: '[]'
-        env-output-variable: ID_OUTPUT
+        env-output-variable: 'ID_OUTPUT'

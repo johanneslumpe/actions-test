@@ -22,6 +22,7 @@ jobs:
         uses: mark43/github-actions/create-rfc-digest@create-rfc-digest-v1
         id: create_rfc_digest
         with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
           issue_numbers: ${{ steps.collect_issues.outputs.issue_numbers }} 
       - name: Send to slack
         uses: mark43/github-actions/slack-messages@slack-messages-v1

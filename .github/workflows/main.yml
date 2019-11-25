@@ -25,3 +25,9 @@ jobs:
           echo '------'
           echo 'output:'
           echo ${{ steps.collect_issues.outputs.issue_numbers }}
+      - name: Send to slack
+        uses: krider2010/slack-bot-action@1.0.1
+        env:
+          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
+          CONVERSATION_ID: ${{ secrets.CONVERSATION_ID }}
+          MESSAGE_STRING = "{ \"text\": \" ${{steps.collect_issues.outputs.issue_numbers }} rfc issues found :tada:\" }"

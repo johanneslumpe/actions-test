@@ -15,8 +15,8 @@ jobs:
         id: collect_issues        
         with:
           repo-token: '"${{ secrets.GITHUB_TOKEN }}"'
-          titlefilters: '["testing"]'
-          labelfilters: '[]'
+          titlefilters: '["^RFC"]'
+          labelfilters: '["rfc/.*]'
           env-output-variable: '"ISSUE_NUMBER_OUTPUT"'
       - name: Output test
         run: |

@@ -24,6 +24,7 @@ jobs:
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           issue_numbers: ${{ steps.collect_issues.outputs.issue_numbers }} 
+          show_attachments: '"false" '
       - name: Send to slack
         uses: mark43/github-actions/slack-messages@slack-messages-v1
         with:

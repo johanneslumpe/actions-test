@@ -18,16 +18,14 @@ jobs:
           titlefilters: '["^RFC"]'
           labelfilters: '["rfc/.*"]'
           env-output-variable: '"ISSUE_NUMBER_OUTPUT"'
-      - name: Output test
-        run: |
-          echo 'env variable:'
-          echo $ISSUE_NUMBER_OUTPUT
-          echo '------'
-          echo 'output:'
-          echo ${{ steps.collect_issues.outputs.issue_numbers }}
+      - name: Create RFC digest
+        uses: mafk43/github-actions/create-rfc-digest@create-rfc-digest-v1
+        id: create_rfc_digest
+        with:
+          issue_numbers: ${{ steps.collect_issues.outputs.issue_numbers }} 
       - name: Send to slack
         uses: mark43/github-actions/slack-messages@slack-messages-v1
         with:
           slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
           default-conversation-id: ${{ secrets.CONVERSATION_ID }}
-          messages: '{"mrkdwn":true,"text":"found issues  *${{ steps.collect_issues.outputs.issue_numbers }}*"}'
+          messages: ${{ steps.create_rfc_digest.outputs.rfc_digest_message_json }}

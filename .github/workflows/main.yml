@@ -26,8 +26,8 @@ jobs:
           echo 'output:'
           echo ${{ steps.collect_issues.outputs.issue_numbers }}
       - name: Send to slack
-        uses: krider2010/slack-bot-action@1.0.1
-        env:
-          SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-          CONVERSATION_ID: ${{ secrets.CONVERSATION_ID }}
-          MESSAGE_STRING = "{ \"text\": \" ${{steps.collect_issues.outputs.issue_numbers }} rfc issues found :tada:\" }"
+        uses: mark43/github-actions/slack-messages@slack-messages-v1
+        with:
+          slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
+          default-conversation-id: ${{ secrets.CONVERSATION_ID }}
+          messages: '{"mrkdwn":true,"text":"found issues  *${{ steps.collect_issues.outputs.issue_numbers }}*"}'

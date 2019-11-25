@@ -19,7 +19,7 @@ jobs:
           labelfilters: '["rfc/.*"]'
           env-output-variable: '"ISSUE_NUMBER_OUTPUT"'
       - name: Create RFC digest
-        uses: mafk43/github-actions/create-rfc-digest@create-rfc-digest-v1
+        uses: mark43/github-actions/create-rfc-digest@create-rfc-digest-v1
         id: create_rfc_digest
         with:
           issue_numbers: ${{ steps.collect_issues.outputs.issue_numbers }} 

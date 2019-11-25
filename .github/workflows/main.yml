@@ -17,11 +17,11 @@ jobs:
           repo-token: '"${{ secrets.GITHUB_TOKEN }}"'
           titlefilters: '["testing"]'
           labelfilters: '[]'
-          env-output-variable: '"ID_OUTPUT"'
+          env-output-variable: '"ISSUE_NUMBER_OUTPUT"'
       - name: Output test
         run: |
           echo 'env variable:'
-          echo $ID_OUTPUT
+          echo $ISSUE_NUMBER_OUTPUT
           echo '------'
           echo 'output:'
-          echo ${{ steps.collect_issues.outputs.issueids }}
+          echo ${{ steps.collect_issues.outputs.issue_numbers }}

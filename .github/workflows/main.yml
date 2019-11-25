@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: Collect issues
         uses: mark43/github-actions/collect-issues@v1
+        id: collect_issues        
         with:
           repo-token: '"${{ secrets.GITHUB_TOKEN }}"'
           titlefilters: '["testing"]'

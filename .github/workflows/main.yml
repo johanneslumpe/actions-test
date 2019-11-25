@@ -16,7 +16,7 @@ jobs:
         with:
           repo-token: '"${{ secrets.GITHUB_TOKEN }}"'
           titlefilters: '["^RFC"]'
-          labelfilters: '["rfc/.*]'
+          labelfilters: '["rfc/.*"]'
           env-output-variable: '"ISSUE_NUMBER_OUTPUT"'
       - name: Output test
         run: |

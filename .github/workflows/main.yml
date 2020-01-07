@@ -1,9 +1,11 @@
 name: RFC workflow
 
 on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '*/1 * * * *'  
   issues:
-    types: [opened, edited]
-    
+    types: [opened, edited]    
 jobs:
   rfc-check:
 

@@ -14,7 +14,7 @@ jobs:
         id: collect_issues        
         with:
           repo-token: '"${{ secrets.GITHUB_TOKEN }}"'
-          titlefilters: '"^\\\\[RFC\\\\]"'
+          titlefilters: '["^RFC","^.{1}RFC.{1}"]'
           labelfilters: '["rfc/.*"]'
           env-output-variable: '"ISSUE_NUMBER_OUTPUT"'
       - name: Create RFC digest

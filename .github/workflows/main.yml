@@ -1,9 +1,8 @@
 name: RFC workflow
 
 on:
-#   schedule:
-#     # * is a special character in YAML so you have to quote this string
-#     - cron:  '*/5 * * * *'    
+  issues:
+    types: [opened, edited]
 jobs:
   rfc-check:
 
@@ -15,7 +14,7 @@ jobs:
         id: collect_issues        
         with:
           repo-token: '"${{ secrets.GITHUB_TOKEN }}"'
-          titlefilters: '["^RFC"]'
+          titlefilters: '["^RFC", "^\[RFC\]"]'
           labelfilters: '["rfc/.*"]'
           env-output-variable: '"ISSUE_NUMBER_OUTPUT"'
       - name: Create RFC digest

@@ -1,0 +1,25 @@
+name: RFC Nudge workflow
+
+ on:
+   issues:
+     types: [opened, edited]
+jobs:
+  rfc-check:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Collect issues
+        uses: mark43/github-actions/collect-issues@v1
+        id: collect_issues        
+        with:
+          repo-token: '"${{ secrets.GITHUB_TOKEN }}"'
+          titlefilters: '["^RFC","^.{1}RFC.{1}"]'
+          labelfilters: '["rfc/.*"]'
+          env-output-variable: '"ISSUE_NUMBER_OUTPUT"'
+      - name: Nudge stale RFC issues
+        uses: mark43/github-actions/nudge-rfc-issues@nudge-rfc-issues-v1
+        id: nudge_stale_rfc_issues
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          issue_numbers: ${{ steps.collect_issues.outputs.issue_numbers }} 

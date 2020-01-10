@@ -1,8 +1,9 @@
 name: RFC Nudge workflow
 
-on:
-  issues:
-     types: [opened, edited]
+# on:
+#   issues:
+#      types: [opened, edited]
+     
 jobs:
   rfc-check:
 
